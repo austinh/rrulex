@@ -21,7 +21,9 @@ defmodule Rrulex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.18", only: :dev}
+      {:timex, "~> 3.3"},
+      {:ex_doc, "~> 0.18", only: :dev},
+      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}
     ]
   end
 

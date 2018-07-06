@@ -71,7 +71,6 @@ defmodule RRulex do
             by_set_pos: [],
             week_start: nil
 
-
   @doc """
   Parses RRULE RFC-2445 string into a usable struct.
 
@@ -95,7 +94,7 @@ defmodule RRulex do
     end)
   end
 
-  def parse_value_as_list(value, map_fn) do
+  defp parse_value_as_list(value, map_fn) do
     value
     |> String.split(",")
     |> Enum.map(map_fn)
@@ -121,7 +120,7 @@ defmodule RRulex do
   end
 
   defp parse_attr_value(:until, value) do
-    out = DateParser.parse(value, "Etc/UTC")
+    out = to_date(value, "Etc/UTC")
 
     case out do
       {:ok, date} -> date
@@ -301,5 +300,15 @@ defmodule RRulex do
 
   defp parse_attr_value(key, _) do
     raise ArgumentError, message: "'#{key}' is not a valid attribute"
+  end
+
+  defp to_date(date_string, timezone) do
+    date_string =
+      case String.last(date_string) do
+        "Z" -> date_string
+        _ -> date_string <> "Z"
+      end
+
+    Timex.parse(date_string <> timezone, "{YYYY}{0M}{0D}T{h24}{m}{s}Z{Zname}")
   end
 end
