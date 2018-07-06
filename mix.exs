@@ -23,6 +23,7 @@ defmodule Rrulex.MixProject do
     [
       {:timex, "~> 3.3"},
       {:ex_doc, "~> 0.18", only: :dev},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}
     ]
   end

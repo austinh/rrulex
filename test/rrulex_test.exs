@@ -22,10 +22,4 @@ defmodule RRulexTest do
     assert RRulex.parse("BYDAY=MO,TU,TH") == %RRulex{by_day: [:monday, :tuesday, :thursday]}
     assert RRulex.parse("WKST=MO") == %RRulex{week_start: :monday}
   end
-
-  test "until converts to datetime" do
-    rrule = "UNTIL=19930721T133000" |> RRulex.parse()
-    assert rrule.until.time_zone == "Etc/UTC"
-    assert Timex.to_erl(rrule.until) == {{1993, 7, 21}, {13, 30, 0}}
-  end
 end
