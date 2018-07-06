@@ -29,4 +29,8 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 
-config :pre_commit, commands: ["format", "credo --strict", "test"], verbose: true
+<<<<<<< Updated upstream
+config :pre_commit, commands: ["format", "credo --strict", "dialyzer", "test"], verbose: true
+=======
+config :pre_commit, commands: ["format", "credo --strict", "test"]
+>>>>>>> Stashed changes
