@@ -1,4 +1,6 @@
 defmodule RRulex do
+  alias RRulex.Parser
+
   @moduledoc """
   Parses an RRULE from the iCalendar RFC-2445 https://www.ietf.org/rfc/rfc2445.txt
   and expands the recurring event it to a List of datetimes.
@@ -19,7 +21,7 @@ defmodule RRulex do
             by_set_pos: [],
             week_start: nil
 
-  def parse(rrule_string), do: RRulex.Parser.parse(rrule_string)
+  def parse(rrule_string), do: Parser.parse(rrule_string)
 
   def all(rrulex) do
   end

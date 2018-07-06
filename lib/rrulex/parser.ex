@@ -1,4 +1,6 @@
 defmodule RRulex.Parser do
+  alias RRulex.Util
+
   @moduledoc """
   Parses an RRULE from the (iCalendar RFC-2445)[https://www.ietf.org/rfc/rfc2445.txt] a into RRulex%{}
   """
@@ -99,7 +101,7 @@ defmodule RRulex.Parser do
   end
 
   defp parse_attr_value(:until, value) do
-    out = RRulex.Util.to_date(value, "Etc/UTC")
+    out = Util.to_date(value, "Etc/UTC")
 
     case out do
       {:ok, date} -> date
